@@ -1,0 +1,15 @@
+<br>
+<h2>Edit Employee</h2><br>
+<br>
+Search&nbsp;<input type="text" id="searchBox" placeholder="Find By Name" (keyup)="search()" [(ngModel)]="searchKey">
+{{searchKey}}
+<br><br>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3 mb-5" *ngFor="let emp of filteredEmployees">
+          <app-employee-info [employee]="emp"></app-employee-info>
+        </div>
+    </div>
+</div>
+

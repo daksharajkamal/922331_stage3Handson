@@ -1,0 +1,37 @@
+<div class="block">
+    <h2>Edit Employee</h2>
+
+<form #empForm="ngForm" (ngSubmit)="onSubmit()">
+<label for="name"><b>Name</b></label><br>
+<input type="text" id="name" name="name" [class.is-invalid] = "name.invalid && name.touched" required minlength="2" maxlength="10" [(ngModel)]="employee.name" #name="ngModel"><br>
+{{name.value}}
+<small class="text-danger" [class.d-none] = "name.valid || name.untouched" >Name must be at least 2 characters long.</small><br>
+
+<label for="salary"><b>Salary</b></label><br>
+<input type="text" id="salary" name="salary" required  [(ngModel)]="employee.salary" #salary="ngModel"><br>
+<small class="text-danger" [class.d-none] = "salary.valid || salary.untouched" >Salary is invalid</small><br>
+
+<label for="permanent"><b>Is Permanent or Not?</b></label><br>
+<input type="radio" id="permanentTrue" aria-checked="true" name="permanent"  [(ngModel)]="employee.permanent" [value]=  trVal #permanent="ngModel">
+<label><b>Yes</b></label>&nbsp;
+<input type="radio" id="permanentFalse" name="permanent" [(ngModel)]="employee.permanent" [value]=falVal #permanent="ngModel">
+<label><b>No</b></label><br><br>
+
+<select class="custom-select" name="Selected Department" (change)="setDeptName($event)"  [(ngModel)]="employee.dept.department_id">
+<option *ngFor="let dep of departments" selected = "dep.department_id == employee.dept.department_id" [value]=dep.department_id>{{dep.department_name}}</option>
+</select>
+<br><br>
+<input type="text" name="department" [(ngModel)]="employee.dept.department_name" #department = "ngModel" class="d-none">
+<br>
+<button type="submit"  [disabled]="!empForm.valid">Save</button>
+</form>
+</div>
+<div class="block">
+    <strong>Employee Model</strong><br>
+    <pre>{{employee | json }}</pre>
+</div>
+
+<div class="block">
+    <strong>Angular Generated Form Model</strong><br>
+    <pre>{{empForm.value | json}}</pre>
+</div>

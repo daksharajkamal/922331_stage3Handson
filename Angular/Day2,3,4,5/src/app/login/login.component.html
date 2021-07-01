@@ -1,0 +1,15 @@
+<br>
+<h2>Login</h2>
+<form #loginForm="ngForm" (ngSubmit)="login()"> 
+<label for="name"><b>Username</b></label><br>
+<input type="text" id="name" name="name" [class.is-invalid] = "name.invalid && name.touched" required minlength="2" maxlength="10" [(ngModel)]="Username" #name="ngModel"><br>
+<small class="text-danger" [class.d-none] = "name.valid || name.untouched" >Username is Required</small><br>
+
+<label for="name"><b>Password</b></label><br>
+<input type="text" id="pass" name="pass" [class.is-invalid] = "pass.invalid && pass.touched" required minlength="2" maxlength="10" [(ngModel)]="Password" #pass="ngModel"><br>
+<small class="text-danger" [class.d-none] = "pass.valid || pass.untouched" >Password is required</small><br>
+
+<button type="submit"  [disabled]="!loginForm.valid">Login</button>
+</form>
+<br><br>
+<h3 class="text-danger" *ngIf="flag">{{msg}}</h3>

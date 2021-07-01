@@ -1,0 +1,8 @@
+<div class="card border-primary">
+  <div class="card-body" >
+    <h5 class="card-title">{{employee.name}}</h5>
+    <p class="card-text">{{employee.salary | currency: 'INR'}}</p>
+    <a [routerLink]="['/rectEditEmp',employee.id]">Edit</a>
+  </div>
+</div>
+        
